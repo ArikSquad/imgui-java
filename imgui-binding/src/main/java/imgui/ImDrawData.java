@@ -175,14 +175,14 @@ public final class ImDrawData extends ImGuiStruct {
     /**
      * Upper-left position of the viewport to render (== upper-left of the orthogonal projection matrix to use)
      */
-    @BindingField(accessors = BindingField.Accessor.GETTER)
+    @BindingField(accessors = {BindingField.Accessor.GETTER, BindingField.Accessor.SETTER})
     public ImVec2 DisplayPos;
 
     /**
      * Size of the viewport to render (== io.DisplaySize for the main viewport)
      * (DisplayPos + DisplaySize == lower-right of the orthogonal projection matrix to use)
      */
-    @BindingField(accessors = BindingField.Accessor.GETTER)
+    @BindingField(accessors = {BindingField.Accessor.GETTER, BindingField.Accessor.SETTER})
     public ImVec2 DisplaySize;
 
     /**
