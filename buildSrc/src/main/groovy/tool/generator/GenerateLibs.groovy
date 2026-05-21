@@ -112,16 +112,6 @@ class GenerateLibs extends DefaultTask {
             replaceSourceFileContent("imgui_draw.cpp", "ImGuiFreeType::GetFontLoader()", "ImFontAtlasGetFontLoaderForStbTruetype()")
         }
 
-        replaceSourceFileContent("imgui_impl_vulkan.cpp",
-            "constants[1] = 2.0f / draw_data->DisplaySize.y;",
-            "constants[1] = -2.0f / draw_data->DisplaySize.y;")
-        replaceSourceFileContent("imgui_impl_vulkan.cpp",
-            "constants[3] = -1.0f - draw_data->DisplayPos.y * constants[1];",
-            "constants[3] = 1.0f - draw_data->DisplayPos.y * constants[1];")
-        replaceSourceFileContent("imgui_impl_vulkan.cpp",
-            "scissor.offset.y = (int32_t)(clip_min.y);",
-            "scissor.offset.y = (int32_t)(fb_height - clip_max.y);")
-
         // Copy dirent for ImGuiFileDialog
         project.copy { CopySpec spec ->
             spec.from(project.rootProject.file('include/ImGuiFileDialog/dirent')) { CopySpec s -> s.include('*.h', '*.cpp', '*.inl') }
